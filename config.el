@@ -34,6 +34,7 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
+(global-display-line-numbers-mode)
 (setq display-line-numbers-type 'relative)
 
 ;; autosave
@@ -58,9 +59,22 @@
 (map! :leader
       :desc "Rename buffer"
       "b r" 'rename-buffer)
+(map! :leader
+      :desc "Eshell" :n "e s" #'eshell
+      :desc "Counsel eshell history" :n "e h" #'counsel-esh-history)
 
 (setq evil-split-window-below t)
 (setq evil-vsplit-window-right t)
+
+;; Eshell config
+(setq eshell-rc-script "~/.doom.d/eshell/profile"
+      eshell-aliases-file "~/.doom.d/eshell/aliases"
+      eshell-history-size 5000
+      eshell-buffer-maximum-lines 5000
+      eshell-hist-ignoredups t
+      eshell-scroll-to-bottom-on-input t
+      eshell-destroy-buffer-when-process-dies t
+      eshell-visual-commands'("bash" "htop" "ssh" "top" "zsh"))
 
 ;; Spell checking
 ;; Requires aspell
@@ -135,6 +149,9 @@
 (use-package company-lsp
   :ensure t
   :commands company-lsp)
+
+;; disable company mode in eshell (major nuisance)
+(setq company-global-modes '(not eshell-mode))
 
 ;;Optional - provides snippet support.
 
