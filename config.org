@@ -1,6 +1,39 @@
+#+TITLE: Doom Emacs Config
+#+AUTHOR: Rajat (rajat4)
+#+DESCRIPTION: Personal Doom Emacs Config.
+#+STARTUP: showeverything
+
+* TABLE OF CONTENTS :toc:
+- [[#about][ABOUT]]
+- [[#themes-and-fonts][THEMES AND FONTS]]
+- [[#org-mode][ORG MODE]]
+- [[#gui-tweaks][GUI TWEAKS]]
+  - [[#line-numbers][LINE NUMBERS]]
+- [[#auto-save][AUTO-SAVE]]
+- [[#custom-keybindings][CUSTOM KEYBINDINGS]]
+- [[#evil-mode][EVIL MODE]]
+  - [[#window-split][WINDOW SPLIT]]
+- [[#flyspell][FLYSPELL]]
+- [[#tree-sitter][TREE SITTER]]
+- [[#super-save][SUPER SAVE]]
+- [[#lsp-mode][LSP MODE]]
+- [[#python-lsp-ms][PYTHON LSP MS]]
+- [[#go-lsp-gopls][GO LSP (GOPLS)]]
+- [[#company][COMPANY]]
+- [[#yasnippet][YASNIPPET]]
+- [[#thrift][THRIFT]]
+- [[#clippety][CLIPPETY]]
+- [[#eshell][ESHELL]]
+
+* ABOUT
+Personal config that I use with [[https://github.com/hlissner/doom-emacs][Doom-Emacs]]
+#+begin_src emacs-lisp
 (setq user-full-name "Rajat"
       user-mail-address "rajat4@uber.com")
+#+end_src
 
+* THEMES AND FONTS
+#+begin_src emacs-lisp
 (setq doom-theme 'doom-material)
 
 (after! doom-themes
@@ -10,14 +43,29 @@
 (setq doom-font (font-spec :family "SauceCodePro Nerd Font Mono" :size 13)
       doom-variable-pitch-font (font-spec :family "Courier" :size 15)
       doom-big-font (font-spec :family "SauceCodePro Nerd Font Mono" :size 24))
+#+end_src
 
+* ORG MODE
+#+begin_src emacs-lisp
 (setq org-directory "~/org/")
+#+end_src
 
+* GUI TWEAKS
+** LINE NUMBERS
+Enable global line number mode (to show lines in terminal, fundamental mode, etc). Setting line numbers to relative mode.
+#+begin_src emacs-lisp
 (global-display-line-numbers-mode) ;; only works with emacs >= 26
 (setq display-line-numbers-type 'relative)
+#+end_src
 
+* AUTO-SAVE
+Enable auto-save by default.
+#+begin_src emacs-lisp
 (setq auto-save-default t)
+#+end_src
 
+* CUSTOM KEYBINDINGS
+#+begin_src emacs-lisp
 (map! :desc "Copy till end of line"
       :n "Y" "y$")
 (map! :desc "Jump backward"
@@ -30,10 +78,18 @@
 (map! :leader
       :desc "Eshell" :n "e s" #'eshell
       :desc "Counsel eshell history" :n "e h" #'counsel-esh-history)
+#+end_src
 
+* EVIL MODE
+** WINDOW SPLIT
+#+begin_src emacs-lisp
 (setq evil-split-window-below t)
 (setq evil-vsplit-window-right t)
+#+end_src
 
+* FLYSPELL
+Used for setting up spell check. Uses `aspell` for dictionary instead of `ispell`
+#+begin_src emacs-lisp
 ;; Spell checking
 ;; Requires aspell
 (use-package flyspell
@@ -44,18 +100,30 @@
             flyspell-prog-text-faces))
   (add-hook 'text-mode-hook 'flyspell-mode)
   (add-hook 'prog-mode-hook 'flyspell-prog-mode))
+#+end_src
 
+* TREE SITTER
+Provides (better) syntax highlighting.
+#+begin_src emacs-lisp
 (use-package! tree-sitter
   :config
   (require 'tree-sitter-langs)
   (global-tree-sitter-mode)
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+#+end_src
 
+* SUPER SAVE
+Enable auto-save in buffers.
+#+begin_src emacs-lisp
 (use-package super-save
   :ensure t
   :config
   (super-save-mode +1))
+#+end_src
 
+* LSP MODE
+LSP package for providing syntax completion, checks, etc.
+#+begin_src emacs-lisp
 (use-package lsp-mode
   :ensure t
   :commands (lsp lsp-deferred)
@@ -77,14 +145,22 @@
       lsp-ui-sideline-enable t
       lsp-ui-imenu-enable t
       lsp-ui-flycheck-enable t)
+#+end_src
 
+* PYTHON LSP MS
+Microsoft python LSP
+#+begin_src emacs-lisp
 (use-package lsp-python-ms
   :ensure t
   :init (setq lsp-python-ms-auto-install-server t)
   :hook (python-mode . (lambda ()
                           (require 'lsp-python-ms)
                           (lsp-deferred))))  ; or lsp-deferred
+#+end_src
 
+* GO LSP (GOPLS)
+Go Lang IDE support using gopls.
+#+begin_src emacs-lisp
 (setq lsp-gopls-staticcheck t)
 (setq lsp-eldoc-render-all nil)
 (setq lsp-gopls-complete-unimported t)
@@ -95,6 +171,11 @@
   (add-hook 'before-save-hook #'lsp-format-buffer t t)
   (add-hook 'before-save-hook #'lsp-organize-imports t t))
 (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+#+end_src
+
+* COMPANY
+Provides auto completion support, also works with LSP mode.
+#+begin_src emacs-lisp
 
 ;;Company mode is a standard completion package that works well with lsp-mode.
 ;;company-lsp integrates company mode completion with lsp-mode.
@@ -112,6 +193,11 @@
 
 ;; disable company mode in eshell (major nuisance)
 (setq company-global-modes '(not eshell-mode))
+#+end_src
+
+* YASNIPPET
+Provides snippet support.
+#+begin_src emacs-lisp
 
 ;;Optional - provides snippet support.
 
@@ -119,20 +205,32 @@
   :ensure t
   :commands yas-minor-mode
   :hook (go-mode . yas-minor-mode))
+#+end_src
 
+* THRIFT
+Syntax support for THRIFT files.
+#+begin_src emacs-lisp
 (use-package thrift
   :config
   (add-hook 'thrift-mode-hook
             (lambda ()
               (setq comment-start "//")
               (setq comment-end ""))))
+#+end_src
+
+* CLIPPETY
+Clippety copies the remote machine clipboard to the local clipboard. Also, works with TMUX.
+#+begin_src emacs-lisp
 
 ;; clipetty config
 (use-package clipetty
   :ensure t
   :bind ("M-w" . clipetty-kill-ring-save)
   :hook (after-init . global-clipetty-mode))
+#+end_src
 
+* ESHELL
+#+begin_src emacs-lisp
 (setq eshell-rc-script (expand-file-name "eshell/profile" doom-private-dir)
       eshell-aliases-file (expand-file-name "eshell/aliases" doom-private-dir)
       eshell-history-size 5000
@@ -141,3 +239,4 @@
       eshell-scroll-to-bottom-on-input t
       eshell-destroy-buffer-when-process-dies t
       eshell-visual-commands'("bash" "htop" "ssh" "top" "zsh" "less"))
+#+end_src
