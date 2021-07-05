@@ -21,6 +21,7 @@ alias rm rm -i $1
 
 # git related aliases
 alias gsha git rev-parse HEAD
+alias gitlog git --no-pager log --pretty=format:"%h%x09%an%x09%ad%x09%s" -n $1 $2
 
 # arc related aliases
 alias adpn arc diff --preview --nounit
