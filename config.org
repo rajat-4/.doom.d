@@ -9,7 +9,7 @@
 - [[#org-mode][ORG MODE]]
 - [[#gui-tweaks][GUI TWEAKS]]
   - [[#line-numbers][LINE NUMBERS]]
-- [[#auto-save][AUTO-SAVE]]
+- [[#file-save-and-load][FILE SAVE AND LOAD]]
 - [[#custom-keybindings][CUSTOM KEYBINDINGS]]
 - [[#evil-mode][EVIL MODE]]
   - [[#window-split][WINDOW SPLIT]]
@@ -58,9 +58,14 @@ Enable global line number mode (to show lines in terminal, fundamental mode, etc
 (setq display-line-numbers-type 'relative)
 #+end_src
 
-* AUTO-SAVE
+* FILE SAVE AND LOAD
 Enable auto-save by default.
 #+begin_src emacs-lisp
+
+;; Auto load files when changed
+(global-auto-revert-mode t)
+
+;; Auto save files
 (setq auto-save-default t)
 #+end_src
 

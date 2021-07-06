@@ -16,6 +16,10 @@
 (global-display-line-numbers-mode) ;; only works with emacs >= 26
 (setq display-line-numbers-type 'relative)
 
+;; Auto load files when changed
+(global-auto-revert-mode t)
+
+;; Auto save files
 (setq auto-save-default t)
 
 (map! :desc "Copy till end of line"
