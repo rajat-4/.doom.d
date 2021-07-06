@@ -144,5 +144,6 @@
       eshell-buffer-maximum-lines 5000
       eshell-hist-ignoredups t
       eshell-scroll-to-bottom-on-input t
+      eshell-kill-on-exit t
       eshell-destroy-buffer-when-process-dies t
       eshell-visual-commands'("bash" "htop" "ssh" "top" "zsh" "less"))
