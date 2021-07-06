@@ -139,6 +139,7 @@
 
 (setq eshell-rc-script (expand-file-name "eshell/profile" doom-private-dir)
       eshell-aliases-file (expand-file-name "eshell/aliases" doom-private-dir)
+      eshell-history-file-name (expand-file-name "eshell/history" doom-private-dir)
       eshell-history-size 5000
       eshell-buffer-maximum-lines 5000
       eshell-hist-ignoredups t
