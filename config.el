@@ -11,6 +11,29 @@
       doom-variable-pitch-font (font-spec :family "Courier" :size 15)
       doom-big-font (font-spec :family "SauceCodePro Nerd Font Mono" :size 24))
 
+(defun my/org-mode/load-prettify-symbols () "Prettify org mode keywords"
+  (interactive)
+  (setq prettify-symbols-alist
+    (mapcan (lambda (x) (list x (cons (upcase (car x)) (cdr x))))
+          '(("#+begin_src" . ?)
+            ("#+end_src" . ?―)
+            ("#+begin_example" . ?)
+            ("#+end_example" . ?)
+            ("#+DATE:" . ?⏱)
+            ("#+AUTHOR:" . ?✏)
+            ("[ ]" .  ?☐)
+            ("[X]" . ?☑ )
+            ("[-]" . ?❍ )
+            ("lambda" . ?λ)
+            ("#+header:" . ?)
+            ("#+name:" . ?﮸)
+            ("#+results:" . ?)
+            ("#+call:" . ?)
+            (":properties:" . ?)
+            (":logbook:" . ?))))
+  (prettify-symbols-mode 1))
+(add-hook 'org-mode-hook #'my/org-mode/load-prettify-symbols)
+
 (setq org-directory "~/org/")
 
 (global-display-line-numbers-mode) ;; only works with emacs >= 26

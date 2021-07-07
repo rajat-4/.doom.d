@@ -6,6 +6,7 @@
 * TABLE OF CONTENTS :toc:
 - [[#about][ABOUT]]
 - [[#themes-and-fonts][THEMES AND FONTS]]
+- [[#prettify-symbol][PRETTIFY SYMBOL]]
 - [[#org-mode][ORG MODE]]
 - [[#gui-tweaks][GUI TWEAKS]]
   - [[#line-numbers][LINE NUMBERS]]
@@ -43,6 +44,32 @@ Personal config that I use with [[https://github.com/hlissner/doom-emacs][Doom-E
 (setq doom-font (font-spec :family "SauceCodePro Nerd Font Mono" :size 13)
       doom-variable-pitch-font (font-spec :family "Courier" :size 15)
       doom-big-font (font-spec :family "SauceCodePro Nerd Font Mono" :size 24))
+#+end_src
+
+* PRETTIFY SYMBOL
+#+begin_src emacs-lisp
+(defun my/org-mode/load-prettify-symbols () "Prettify org mode keywords"
+  (interactive)
+  (setq prettify-symbols-alist
+    (mapcan (lambda (x) (list x (cons (upcase (car x)) (cdr x))))
+          '(("#+begin_src" . ?)
+            ("#+end_src" . ?―)
+            ("#+begin_example" . ?)
+            ("#+end_example" . ?)
+            ("#+DATE:" . ?⏱)
+            ("#+AUTHOR:" . ?✏)
+            ("[ ]" .  ?☐)
+            ("[X]" . ?☑ )
+            ("[-]" . ?❍ )
+            ("lambda" . ?λ)
+            ("#+header:" . ?)
+            ("#+name:" . ?﮸)
+            ("#+results:" . ?)
+            ("#+call:" . ?)
+            (":properties:" . ?)
+            (":logbook:" . ?))))
+  (prettify-symbols-mode 1))
+(add-hook 'org-mode-hook #'my/org-mode/load-prettify-symbols)
 #+end_src
 
 * ORG MODE
