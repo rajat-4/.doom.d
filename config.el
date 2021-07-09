@@ -1,7 +1,7 @@
 (setq user-full-name "Rajat"
       user-mail-address "rajat4@uber.com")
 
-(setq doom-theme 'doom-material)
+(setq doom-theme 'doom-one)
 
 (after! doom-themes
   (setq doom-themes-enable-bold t
