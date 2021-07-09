@@ -31,3 +31,8 @@ alias alu arc lint && arc unit
 # bazel related aliases
 alias bb bazel build  --jobs=8 --local_ram_resources='HOST_RAM*.5' $1
 alias br bazel run :banker --
+
+# go monorepo aliases
+alias gazelle /home/user/go-code/bin/gazelle $1
+alias setup-gopath /home/user/go-code/bin/setup-gopath $1
+alias coverage /home/user/go-code/bin/coverage $1
