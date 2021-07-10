@@ -1,1 +1,4 @@
-# colorscript random
+export GO111MODULE='off'
+export GOBIN='/opt/go/path/bin'
+export GOMODCACHE='/home/user/go-code/pkg/mod'
+export GOPATH='/home/user/go-code'
