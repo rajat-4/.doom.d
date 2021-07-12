@@ -110,6 +110,8 @@ Enable auto-save by default.
 (map! :leader
       :desc "Eshell" :n "e s" #'eshell
       :desc "Counsel eshell history" :n "e h" #'counsel-esh-history)
+(map! :leader
+      :desc "View go-monorepo coverage" :n "v c" (lambda()(interactive) (eww-open-file "/home/user/go-code/build/code-coverage/coverage.html")))
 #+end_src
 
 * EVIL MODE

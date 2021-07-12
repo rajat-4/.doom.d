@@ -57,6 +57,8 @@
 (map! :leader
       :desc "Eshell" :n "e s" #'eshell
       :desc "Counsel eshell history" :n "e h" #'counsel-esh-history)
+(map! :leader
+      :desc "View go-monorepo coverage" :n "v c" (lambda()(interactive) (eww-open-file "/home/user/go-code/build/code-coverage/coverage.html")))
 
 (setq evil-split-window-below t)
 (setq evil-vsplit-window-right t)
