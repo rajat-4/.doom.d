@@ -172,3 +172,5 @@
       eshell-kill-on-exit t
       eshell-destroy-buffer-when-process-dies t
       eshell-visual-commands'("bash" "htop" "ssh" "top" "zsh" "less"))
+
+(setq doom-modeline-vcs-max-length 25)

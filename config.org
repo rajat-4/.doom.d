@@ -25,6 +25,7 @@
 - [[#thrift][THRIFT]]
 - [[#clippety][CLIPPETY]]
 - [[#eshell][ESHELL]]
+- [[#modeline][MODELINE]]
 
 * ABOUT
 Personal config that I use with [[https://github.com/hlissner/doom-emacs][Doom-Emacs]]
@@ -275,4 +276,10 @@ Clippety copies the remote machine clipboard to the local clipboard. Also, works
       eshell-kill-on-exit t
       eshell-destroy-buffer-when-process-dies t
       eshell-visual-commands'("bash" "htop" "ssh" "top" "zsh" "less"))
+#+end_src
+
+* MODELINE
+Configurations for doom modeline.
+#+begin_src emacs-lisp
+(setq doom-modeline-vcs-max-length 25)
 #+end_src
