@@ -53,7 +53,7 @@
       :n "] g" 'evil-jump-forward)
 (map! :leader
       :desc "Rename buffer"
-      "b r" 'rename-buffer)
+      "b R" 'rename-buffer)
 (map! :leader
       :desc "Eshell" :n "e s" #'eshell
       :desc "Counsel eshell history" :n "e h" #'counsel-esh-history)
