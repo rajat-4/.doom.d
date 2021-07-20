@@ -1,0 +1,49 @@
+#+TITLE: Aliases
+#+AUTHOR: Rajat (rajat4)
+#+DESCRIPTION: Set of aliases to be used with the zsh shell.
+#+STARTUP: showeverything
+#+PROPERTY: header-args :tangle "~/.zsh_aliases"
+
+* TABLE OF CONTENT :toc:
+- [[#git-aliases][GIT ALIASES]]
+- [[#arc-aliases][ARC ALIASES]]
+- [[#file-aliases][FILE ALIASES]]
+- [[#doom-emacs][DOOM EMACS]]
+- [[#terminal-aliases][TERMINAL ALIASES]]
+- [[#bazel-aliases][BAZEL ALIASES]]
+
+* GIT ALIASES
+#+begin_src bash
+alias gsha='git rev-parse HEAD'
+alias gitlog='git --no-pager log --pretty=format:"%h%x09%an%x09%ad%x09%s" -n'
+#+end_src
+
+* ARC ALIASES
+#+begin_src bash
+alias adpn="arc diff --preview --nounit"
+alias adp="arc diff --preview"
+alias alu="arc lint && arc unit"
+#+end_src
+
+* FILE ALIASES
+#+begin_src bash
+alias mv='mv -i'
+alias rm='rm -i'
+#+end_src
+
+* DOOM EMACS
+#+begin_src bash
+alias doom='~/.emacs.d/bin/doom'
+#+end_src
+
+* TERMINAL ALIASES
+#+begin_src bash
+alias clear="tput reset"
+#+end_src
+
+* BAZEL ALIASES
+#+begin_src bash
+unalias '...'
+alias bb="bazel build  --jobs=16 --local_ram_resources='HOST_RAM*.5'"
+alias br="bazel run :banker --"
+#+end_src
