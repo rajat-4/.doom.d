@@ -107,6 +107,9 @@
       lsp-ui-imenu-enable t
       lsp-ui-flycheck-enable t)
 
+;; Increase file watch threshold.
+(setq lsp-file-watch-threshold 5000)
+
 (use-package lsp-python-ms
   :ensure t
   :init (setq lsp-python-ms-auto-install-server t)

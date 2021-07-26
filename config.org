@@ -181,6 +181,9 @@ LSP package for providing syntax completion, checks, etc.
       lsp-ui-sideline-enable t
       lsp-ui-imenu-enable t
       lsp-ui-flycheck-enable t)
+
+;; Increase file watch threshold.
+(setq lsp-file-watch-threshold 5000)
 #+end_src
 
 * PYTHON LSP MS
