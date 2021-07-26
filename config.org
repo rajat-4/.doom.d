@@ -26,6 +26,7 @@
 - [[#clippety][CLIPPETY]]
 - [[#eshell][ESHELL]]
 - [[#modeline][MODELINE]]
+- [[#environment-variables][ENVIRONMENT VARIABLES]]
 
 * ABOUT
 Personal config that I use with [[https://github.com/hlissner/doom-emacs][Doom-Emacs]]
@@ -282,4 +283,12 @@ Clippety copies the remote machine clipboard to the local clipboard. Also, works
 Configurations for doom modeline.
 #+begin_src emacs-lisp
 (setq doom-modeline-vcs-max-length 25)
+#+end_src
+
+* ENVIRONMENT VARIABLES
+#+begin_src emacs-lisp
+(setenv "GO111MODULE" "off")
+(setenv "GOPATH" "/home/user/go-code")
+(setenv "GOBIN" "/opt/go/path/bin")
+(setenv "GOMODCACHE" "/home/user/go-code/pkg/mod")
 #+end_src
