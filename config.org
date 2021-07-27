@@ -77,6 +77,12 @@ Personal config that I use with [[https://github.com/hlissner/doom-emacs][Doom-E
 * ORG MODE
 #+begin_src emacs-lisp
 (setq org-directory "~/org/")
+;; Keybinding for tangling org file.
+(map! :after evil-org
+      (:map evil-org-mode-map
+       :localleader
+       :desc "Tangle org file"
+       :n "B" #'org-babel-tangle))
 #+end_src
 
 * GUI TWEAKS
@@ -108,7 +114,7 @@ Enable auto-save by default.
       :n "] g" 'evil-jump-forward)
 (map! :leader
       :desc "Rename buffer"
-      "b R" 'rename-buffer)
+      :n "b R" 'rename-buffer)
 (map! :leader
       :desc "Eshell" :n "e s" #'eshell
       :desc "Counsel eshell history" :n "e h" #'counsel-esh-history)

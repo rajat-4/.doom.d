@@ -35,6 +35,12 @@
 (add-hook 'org-mode-hook #'my/org-mode/load-prettify-symbols)
 
 (setq org-directory "~/org/")
+;; Keybinding for tangling org file.
+(map! :after evil-org
+      (:map evil-org-mode-map
+       :localleader
+       :desc "Tangle org file"
+       :n "B" #'org-babel-tangle))
 
 (global-display-line-numbers-mode) ;; only works with emacs >= 26
 (setq display-line-numbers-type 'relative)
@@ -53,7 +59,7 @@
       :n "] g" 'evil-jump-forward)
 (map! :leader
       :desc "Rename buffer"
-      "b R" 'rename-buffer)
+      :n "b R" 'rename-buffer)
 (map! :leader
       :desc "Eshell" :n "e s" #'eshell
       :desc "Counsel eshell history" :n "e h" #'counsel-esh-history)
