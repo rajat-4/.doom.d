@@ -118,8 +118,9 @@ Enable auto-save by default.
 (map! :leader
       :desc "Eshell" :n "e s" #'eshell
       :desc "Counsel eshell history" :n "e h" #'counsel-esh-history)
-(map! :leader
-      :desc "View go-monorepo coverage" :n "v c" (lambda()(interactive) (eww-open-file "/home/user/go-code/build/code-coverage/coverage.html")))
+(map! :map go-mode-map
+      :localleader
+      :desc "View go-monorepo coverage" :n "c" (lambda()(interactive) (eww-open-file "/home/user/go-code/build/code-coverage/coverage.html")))
 #+end_src
 
 * EVIL MODE
@@ -158,7 +159,6 @@ Provides (better) syntax highlighting.
 Enable auto-save in buffers.
 #+begin_src emacs-lisp
 (use-package super-save
-  :ensure t
   :config
   (super-save-mode +1))
 #+end_src
@@ -167,13 +167,11 @@ Enable auto-save in buffers.
 LSP package for providing syntax completion, checks, etc.
 #+begin_src emacs-lisp
 (use-package lsp-mode
-  :ensure t
   :commands (lsp lsp-deferred)
   :hook (go-mode . lsp-deferred))
 
 ;;Optional - provides fancier overlays.
 (use-package lsp-ui
-  :ensure t
   :commands lsp-ui-mode
   :init
 )
@@ -196,7 +194,6 @@ LSP package for providing syntax completion, checks, etc.
 Microsoft python LSP
 #+begin_src emacs-lisp
 (use-package lsp-python-ms
-  :ensure t
   :init (setq lsp-python-ms-auto-install-server t)
   :hook (python-mode . (lambda ()
                           (require 'lsp-python-ms)
@@ -227,13 +224,11 @@ Provides auto completion support, also works with LSP mode.
 ;;completion-at-point also works out of the box but doesn't support snippets.
 
 (use-package company
-  :ensure t
   :config
   (setq company-idle-delay 0)
   (setq company-minimum-prefix-length 1))
 
 (use-package company-lsp
-  :ensure t
   :commands company-lsp)
 
 ;; disable company mode in eshell (major nuisance)
@@ -247,7 +242,6 @@ Provides snippet support.
 ;;Optional - provides snippet support.
 
 (use-package yasnippet
-  :ensure t
   :commands yas-minor-mode
   :hook (go-mode . yas-minor-mode))
 #+end_src
@@ -269,7 +263,6 @@ Clippety copies the remote machine clipboard to the local clipboard. Also, works
 
 ;; clipetty config
 (use-package clipetty
-  :ensure t
   :bind ("M-w" . clipetty-kill-ring-save)
   :hook (after-init . global-clipetty-mode))
 #+end_src

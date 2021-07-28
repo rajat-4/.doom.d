@@ -63,8 +63,9 @@
 (map! :leader
       :desc "Eshell" :n "e s" #'eshell
       :desc "Counsel eshell history" :n "e h" #'counsel-esh-history)
-(map! :leader
-      :desc "View go-monorepo coverage" :n "v c" (lambda()(interactive) (eww-open-file "/home/user/go-code/build/code-coverage/coverage.html")))
+(map! :map go-mode-map
+      :localleader
+      :desc "View go-monorepo coverage" :n "c" (lambda()(interactive) (eww-open-file "/home/user/go-code/build/code-coverage/coverage.html")))
 
 (setq evil-split-window-below t)
 (setq evil-vsplit-window-right t)
@@ -87,18 +88,15 @@
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 
 (use-package super-save
-  :ensure t
   :config
   (super-save-mode +1))
 
 (use-package lsp-mode
-  :ensure t
   :commands (lsp lsp-deferred)
   :hook (go-mode . lsp-deferred))
 
 ;;Optional - provides fancier overlays.
 (use-package lsp-ui
-  :ensure t
   :commands lsp-ui-mode
   :init
 )
@@ -117,7 +115,6 @@
 (setq lsp-file-watch-threshold 5000)
 
 (use-package lsp-python-ms
-  :ensure t
   :init (setq lsp-python-ms-auto-install-server t)
   :hook (python-mode . (lambda ()
                           (require 'lsp-python-ms)
@@ -139,13 +136,11 @@
 ;;completion-at-point also works out of the box but doesn't support snippets.
 
 (use-package company
-  :ensure t
   :config
   (setq company-idle-delay 0)
   (setq company-minimum-prefix-length 1))
 
 (use-package company-lsp
-  :ensure t
   :commands company-lsp)
 
 ;; disable company mode in eshell (major nuisance)
@@ -154,7 +149,6 @@
 ;;Optional - provides snippet support.
 
 (use-package yasnippet
-  :ensure t
   :commands yas-minor-mode
   :hook (go-mode . yas-minor-mode))
 
@@ -167,7 +161,6 @@
 
 ;; clipetty config
 (use-package clipetty
-  :ensure t
   :bind ("M-w" . clipetty-kill-ring-save)
   :hook (after-init . global-clipetty-mode))
 
