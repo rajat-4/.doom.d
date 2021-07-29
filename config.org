@@ -31,6 +31,7 @@
   - [[#keybindings-1][KEYBINDINGS]]
 - [[#modeline][MODELINE]]
 - [[#environment-variables][ENVIRONMENT VARIABLES]]
+- [[#vterm][VTERM]]
 
 * ABOUT
 Personal config that I use with [[https://github.com/hlissner/doom-emacs][Doom-Emacs]]
@@ -310,4 +311,10 @@ Configurations for doom modeline.
 (setenv "GOPATH" "/home/user/go-code")
 (setenv "GOBIN" "/opt/go/path/bin")
 (setenv "GOMODCACHE" "/home/user/go-code/pkg/mod")
+#+end_src
+
+* VTERM
+#+begin_src emacs-lisp
+;; Ensure mode line is not hidden for vterm, makes it easier to see the current mode(nvi).
+(remove-hook 'vterm-mode-hook 'hide-mode-line-mode)
 #+end_src

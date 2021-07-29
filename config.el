@@ -188,3 +188,6 @@
 (setenv "GOPATH" "/home/user/go-code")
 (setenv "GOBIN" "/opt/go/path/bin")
 (setenv "GOMODCACHE" "/home/user/go-code/pkg/mod")
+
+;; Ensure mode line is not hidden for vterm, makes it easier to see the current mode(nvi).
+(remove-hook 'vterm-mode-hook 'hide-mode-line-mode)
