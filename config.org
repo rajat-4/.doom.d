@@ -19,12 +19,16 @@
 - [[#super-save][SUPER SAVE]]
 - [[#lsp-mode][LSP MODE]]
 - [[#python-lsp-ms][PYTHON LSP MS]]
-- [[#go-lsp-gopls][GO LSP (GOPLS)]]
+- [[#go][GO]]
+  - [[#lsp-gopls][LSP (GOPLS)]]
+  - [[#keybindings][KEYBINDINGS]]
 - [[#company][COMPANY]]
 - [[#yasnippet][YASNIPPET]]
 - [[#thrift][THRIFT]]
 - [[#clippety][CLIPPETY]]
 - [[#eshell][ESHELL]]
+  - [[#config][CONFIG]]
+  - [[#keybindings-1][KEYBINDINGS]]
 - [[#modeline][MODELINE]]
 - [[#environment-variables][ENVIRONMENT VARIABLES]]
 
@@ -115,12 +119,10 @@ Enable auto-save by default.
 (map! :leader
       :desc "Rename buffer"
       :n "b R" 'rename-buffer)
-(map! :leader
-      :desc "Eshell" :n "e s" #'eshell
-      :desc "Counsel eshell history" :n "e h" #'counsel-esh-history)
-(map! :map go-mode-map
-      :localleader
-      :desc "View go-monorepo coverage" :n "c" (lambda()(interactive) (eww-open-file "/home/user/go-code/build/code-coverage/coverage.html")))
+(map! :desc "Previous error"
+      :n "[ e" #'flycheck-previous-error)
+(map! :desc "Next error"
+      :n "] e" #'flycheck-next-error)
 #+end_src
 
 * EVIL MODE
@@ -200,7 +202,8 @@ Microsoft python LSP
                           (lsp-deferred))))  ; or lsp-deferred
 #+end_src
 
-* GO LSP (GOPLS)
+* GO
+** LSP (GOPLS)
 Go Lang IDE support using gopls.
 #+begin_src emacs-lisp
 (setq lsp-gopls-staticcheck t)
@@ -213,6 +216,13 @@ Go Lang IDE support using gopls.
   (add-hook 'before-save-hook #'lsp-format-buffer t t)
   (add-hook 'before-save-hook #'lsp-organize-imports t t))
 (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+#+end_src
+** KEYBINDINGS
+#+begin_src emacs-lisp
+(map! :map go-mode-map
+      :localleader
+      :desc "View go-monorepo coverage"
+      :n "c" (lambda()(interactive) (eww-open-file "/home/user/go-code/build/code-coverage/coverage.html")))
 #+end_src
 
 * COMPANY
@@ -268,6 +278,7 @@ Clippety copies the remote machine clipboard to the local clipboard. Also, works
 #+end_src
 
 * ESHELL
+** CONFIG
 #+begin_src emacs-lisp
 (setq eshell-rc-script (expand-file-name "eshell/profile" doom-private-dir)
       eshell-aliases-file (expand-file-name "eshell/aliases" doom-private-dir)
@@ -279,6 +290,12 @@ Clippety copies the remote machine clipboard to the local clipboard. Also, works
       eshell-kill-on-exit t
       eshell-destroy-buffer-when-process-dies t
       eshell-visual-commands'("bash" "htop" "ssh" "top" "zsh" "less"))
+#+end_src
+** KEYBINDINGS
+#+begin_src emacs-lisp
+(map! :leader
+      :desc "Eshell" :n "e s" #'eshell
+      :desc "Counsel eshell history" :n "e h" #'counsel-esh-history)
 #+end_src
 
 * MODELINE

@@ -60,12 +60,10 @@
 (map! :leader
       :desc "Rename buffer"
       :n "b R" 'rename-buffer)
-(map! :leader
-      :desc "Eshell" :n "e s" #'eshell
-      :desc "Counsel eshell history" :n "e h" #'counsel-esh-history)
-(map! :map go-mode-map
-      :localleader
-      :desc "View go-monorepo coverage" :n "c" (lambda()(interactive) (eww-open-file "/home/user/go-code/build/code-coverage/coverage.html")))
+(map! :desc "Previous error"
+      :n "[ e" #'flycheck-previous-error)
+(map! :desc "Next error"
+      :n "] e" #'flycheck-next-error)
 
 (setq evil-split-window-below t)
 (setq evil-vsplit-window-right t)
@@ -131,6 +129,11 @@
   (add-hook 'before-save-hook #'lsp-organize-imports t t))
 (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
 
+(map! :map go-mode-map
+      :localleader
+      :desc "View go-monorepo coverage"
+      :n "c" (lambda()(interactive) (eww-open-file "/home/user/go-code/build/code-coverage/coverage.html")))
+
 ;;Company mode is a standard completion package that works well with lsp-mode.
 ;;company-lsp integrates company mode completion with lsp-mode.
 ;;completion-at-point also works out of the box but doesn't support snippets.
@@ -174,6 +177,10 @@
       eshell-kill-on-exit t
       eshell-destroy-buffer-when-process-dies t
       eshell-visual-commands'("bash" "htop" "ssh" "top" "zsh" "less"))
+
+(map! :leader
+      :desc "Eshell" :n "e s" #'eshell
+      :desc "Counsel eshell history" :n "e h" #'counsel-esh-history)
 
 (setq doom-modeline-vcs-max-length 25)
 
