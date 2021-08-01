@@ -325,13 +325,13 @@ Keybindings for resolving and navigating conflicts.
 #+begin_src emacs-lisp
 (map! :map smerge-mode-map
       (:desc "keep upper"
-       :n "d g u" #'smerge-keep-upper)
+       :n "s k u" #'smerge-keep-upper)
       (:desc "keep lower"
-       :n "d g l" #'smerge-keep-lower)
+       :n "s k l" #'smerge-keep-lower)
       (:desc "keep base"
-       :n "d g b" #'smerge-keep-base)
+       :n "s k b" #'smerge-keep-base)
       (:desc "keep all"
-       :n "d g a" #'smerge-keep-all)
+       :n "s k a" #'smerge-keep-all)
       (:desc "next conflict"
        :n "] c" #'smerge-next)
       (:desc "previous conflict"
