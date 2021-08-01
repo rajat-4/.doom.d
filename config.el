@@ -191,3 +191,17 @@
 
 ;; Ensure mode line is not hidden for vterm, makes it easier to see the current mode(nvi).
 (remove-hook 'vterm-mode-hook 'hide-mode-line-mode)
+
+(map! :map smerge-mode-map
+      (:desc "keep upper"
+       :n "d g u" #'smerge-keep-upper)
+      (:desc "keep lower"
+       :n "d g l" #'smerge-keep-lower)
+      (:desc "keep base"
+       :n "d g b" #'smerge-keep-base)
+      (:desc "keep all"
+       :n "d g a" #'smerge-keep-all)
+      (:desc "next conflict"
+       :n "] c" #'smerge-next)
+      (:desc "previous conflict"
+       :n "[ c" #'smerge-prev))
