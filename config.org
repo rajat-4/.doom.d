@@ -82,7 +82,11 @@ Personal config that I use with [[https://github.com/hlissner/doom-emacs][Doom-E
 
 * ORG MODE
 #+begin_src emacs-lisp
-(setq org-directory "~/org/")
+(use-package org
+  :config
+  (setq org-directory "~/org/"
+        org-ellipsis " ▼"))
+
 ;; Keybinding for tangling org file.
 (map! :after evil-org
       (:map evil-org-mode-map

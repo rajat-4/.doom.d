@@ -34,7 +34,11 @@
   (prettify-symbols-mode 1))
 (add-hook 'org-mode-hook #'my/org-mode/load-prettify-symbols)
 
-(setq org-directory "~/org/")
+(use-package org
+  :config
+  (setq org-directory "~/org/"
+        org-ellipsis " ▼"))
+
 ;; Keybinding for tangling org file.
 (map! :after evil-org
       (:map evil-org-mode-map
