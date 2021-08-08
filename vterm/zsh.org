@@ -2,7 +2,7 @@
 #+AUTHOR: Rajat (rajat4)
 #+DESCRIPTION: Set of aliases to be used with the zsh shell.
 #+STARTUP: showeverything
-#+PROPERTY: header-args :tangle "~/.zsh_aliases"
+#+PROPERTY: header-args :tangle "~/.zsh_profile"
 
 * TABLE OF CONTENT :toc:
 - [[#git-aliases][GIT ALIASES]]
@@ -11,6 +11,7 @@
 - [[#doom-emacs][DOOM EMACS]]
 - [[#terminal-aliases][TERMINAL ALIASES]]
 - [[#bazel-aliases][BAZEL ALIASES]]
+- [[#variables][VARIABLES]]
 
 * GIT ALIASES
 #+begin_src bash
@@ -29,6 +30,7 @@ alias alu="arc lint && arc unit"
 #+begin_src bash
 alias mv='mv -i'
 alias rm='rm -i'
+alias cp='cp -i'
 #+end_src
 
 * DOOM EMACS
@@ -46,4 +48,10 @@ alias clear="tput reset"
 unalias '...'
 alias bb="bazel build  --jobs=16 --local_ram_resources='HOST_RAM*.5'"
 alias br="bazel run :banker --"
+#+end_src
+
+* VARIABLES
+#+begin_src bash
+export PATH=$PATH:$GOPATH/bin
+export PATH=~/.emacs.d/bin:$PATH
 #+end_src
