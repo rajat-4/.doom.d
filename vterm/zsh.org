@@ -54,4 +54,5 @@ alias br="bazel run :banker --"
 #+begin_src bash
 export PATH=$PATH:$GOPATH/bin
 export PATH=~/.emacs.d/bin:$PATH
+export PATH=/opt/go/path/bin:$PATH
 #+end_src
