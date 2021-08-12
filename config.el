@@ -57,6 +57,8 @@
 
 (map! :desc "Copy till end of line"
       :n "Y" "y$")
+(map! :desc "[Insert Mode] Paste"
+      :i "M-v" #'evil-paste-after)
 (map! :desc "Jump backward"
       :n "[ g" 'evil-jump-backward)
 (map! :desc "Jump forward"
@@ -198,7 +200,7 @@
 
 (map! :after vterm
       :map vterm-mode-map
-      :i "C-r" #'evil-paste-from-register)
+      :i "M-v" #'vterm-yank)
 
 (map! :map smerge-mode-map
       (:desc "keep upper"
