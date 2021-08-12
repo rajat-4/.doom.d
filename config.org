@@ -322,6 +322,9 @@ Configurations for doom modeline.
 #+begin_src emacs-lisp
 ;; Ensure mode line is not hidden for vterm, makes it easier to see the current mode(nvi).
 (remove-hook 'vterm-mode-hook 'hide-mode-line-mode)
+
+(map! :map vterm-mode-map
+      :i "C-r" #'evil-paste-from-register)
 #+end_src
 
 * SMERGE MODE

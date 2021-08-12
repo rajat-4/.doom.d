@@ -196,6 +196,9 @@
 ;; Ensure mode line is not hidden for vterm, makes it easier to see the current mode(nvi).
 (remove-hook 'vterm-mode-hook 'hide-mode-line-mode)
 
+(map! :map vterm-mode-map
+      :i "C-r" #'evil-paste-from-register)
+
 (map! :map smerge-mode-map
       (:desc "keep upper"
        :n "s k u" #'smerge-keep-upper)
