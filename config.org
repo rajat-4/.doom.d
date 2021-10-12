@@ -33,6 +33,7 @@
 - [[#environment-variables][ENVIRONMENT VARIABLES]]
 - [[#vterm][VTERM]]
 - [[#smerge-mode][SMERGE MODE]]
+- [[#workspace][WORKSPACE]]
 
 * ABOUT
 Personal config that I use with [[https://github.com/hlissner/doom-emacs][Doom-Emacs]]
@@ -346,4 +347,15 @@ Keybindings for resolving and navigating conflicts.
        :n "] c" #'smerge-next)
       (:desc "previous conflict"
        :n "[ c" #'smerge-prev))
+#+end_src
+
+* WORKSPACE
+Keybindings for workspace related actions.
+#+begin_src emacs-lisp
+(map! :desc "Move workspace left"
+      :leader
+      :n "TAB j" #'+workspace/swap-left)
+(map! :desc "Move workspace right"
+      :leader
+      :n "TAB k" #'+workspace/swap-right)
 #+end_src

@@ -215,3 +215,10 @@
        :n "] c" #'smerge-next)
       (:desc "previous conflict"
        :n "[ c" #'smerge-prev))
+
+(map! :desc "Move workspace left"
+      :leader
+      :n "TAB j" #'+workspace/swap-left)
+(map! :desc "Move workspace right"
+      :leader
+      :n "TAB k" #'+workspace/swap-right)
