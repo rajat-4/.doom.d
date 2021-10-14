@@ -218,7 +218,7 @@
 
 (map! :desc "Move workspace left"
       :leader
-      :n "TAB j" #'+workspace/swap-left)
+      :n "TAB k" #'+workspace/swap-left)
 (map! :desc "Move workspace right"
       :leader
-      :n "TAB k" #'+workspace/swap-right)
+      :n "TAB j" #'+workspace/swap-right)
