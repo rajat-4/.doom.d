@@ -101,7 +101,7 @@ Personal config that I use with [[https://github.com/hlissner/doom-emacs][Doom-E
 Enable global line number mode (to show lines in terminal, fundamental mode, etc). Setting line numbers to relative mode.
 #+begin_src emacs-lisp
 (global-display-line-numbers-mode) ;; only works with emacs >= 26
-(setq display-line-numbers-type 'relative)
+(setq display-line-numbers-type 'visual)
 #+end_src
 
 * FILE SAVE AND LOAD

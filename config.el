@@ -47,7 +47,7 @@
        :n "B" #'org-babel-tangle))
 
 (global-display-line-numbers-mode) ;; only works with emacs >= 26
-(setq display-line-numbers-type 'relative)
+(setq display-line-numbers-type 'visual)
 
 ;; Auto load files when changed
 (global-auto-revert-mode t)
