@@ -191,7 +191,7 @@
 (setq doom-modeline-vcs-max-length 25)
 
 (setenv "GO111MODULE" "off")
-(setenv "GOPATH" "/home/user/go-code")
+(setenv "GOPATH" "/home/user/go-code-sparse")
 (setenv "GOBIN" "/opt/go/path/bin")
 (setenv "GOMODCACHE" "/home/user/go-code/pkg/mod")
 

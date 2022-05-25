@@ -316,7 +316,7 @@ Configurations for doom modeline.
 * ENVIRONMENT VARIABLES
 #+begin_src emacs-lisp
 (setenv "GO111MODULE" "off")
-(setenv "GOPATH" "/home/user/go-code")
+(setenv "GOPATH" "/home/user/go-code-sparse")
 (setenv "GOBIN" "/opt/go/path/bin")
 (setenv "GOMODCACHE" "/home/user/go-code/pkg/mod")
 #+end_src
